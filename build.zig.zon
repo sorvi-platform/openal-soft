@@ -1,0 +1,17 @@
+.{
+    .name = .openal,
+    .version = "1.25.0",
+    .fingerprint = 0xc7e16a6db028ef6a,
+    .minimum_zig_version = "0.15.0",
+    .dependencies = .{
+        .@"openal-soft" = .{
+            .url = "git+https://github.com/kcat/openal-soft.git#d8fecf85bbe8d5d07758e33163d13fb2cb461a1a",
+            .hash = "N-V-__8AACY9YgDg_RBYnXg6sd2R_Vi2sihD5vn6f_x16ISA",
+        },
+    },
+    .paths = .{
+        "build.zig",
+        "build.zig.zon",
+        "src",
+    },
+}
