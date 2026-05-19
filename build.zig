@@ -47,7 +47,7 @@ pub fn build(b: *std.Build) void {
         .style = .{ .cmake = al_dep.path("config.h.in") },
         .include_path = "config.h",
     }, .{
-        .ALSOFT_FORCE_ALIGN = "__attribute__((force_align_arg_pointer))",
+        .ALSOFT_FORCE_ALIGN = "",
         .ALSOFT_EMBED_HRTF_DATA = 0,
         .HAVE_PROC_PIDPATH = 0,
         .HAVE_DLFCN_H = 0,
@@ -116,6 +116,7 @@ pub fn build(b: *std.Build) void {
     libal.root_module.addCSourceFiles(.{
         .flags = defines,
         .files = &.{
+            "common/altypes.cpp",
             "common/alcomplex.cpp",
             "common/almalloc.cpp",
             "common/alstring.cpp",
@@ -212,8 +213,8 @@ pub fn build(b: *std.Build) void {
     libal.root_module.addCSourceFiles(.{
         .flags = defines,
         .files = switch (backend) {
-            .sdl2 => &.{ "alc/backends/sdl2.cpp" },
-            .sdl3 => &.{ "alc/backends/sdl3.cpp" },
+            .sdl2 => &.{"alc/backends/sdl2.cpp"},
+            .sdl3 => &.{"alc/backends/sdl3.cpp"},
             .none => &.{},
         },
         .root = al_dep.path(""),
