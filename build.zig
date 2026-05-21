@@ -24,12 +24,12 @@ pub fn build(b: *std.Build) void {
             .link_libcpp = true,
         }),
     });
-    libal.addIncludePath(al_dep.path(""));
-    libal.addIncludePath(al_dep.path("common"));
-    libal.addIncludePath(al_dep.path("gsl/include"));
-    libal.addIncludePath(al_dep.path("fmt-11.2.0/include"));
-    libal.addIncludePath(al_dep.path("include"));
-    libal.addIncludePath(al_dep.path("include/AL"));
+    libal.root_module.addIncludePath(al_dep.path(""));
+    libal.root_module.addIncludePath(al_dep.path("common"));
+    libal.root_module.addIncludePath(al_dep.path("gsl/include"));
+    libal.root_module.addIncludePath(al_dep.path("fmt-11.2.0/include"));
+    libal.root_module.addIncludePath(al_dep.path("include"));
+    libal.root_module.addIncludePath(al_dep.path("include/AL"));
     libal.installHeadersDirectory(al_dep.path("include"), "", .{});
 
     const version = b.addConfigHeader(.{
